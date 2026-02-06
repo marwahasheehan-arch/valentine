@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <title>Valentine 💘</title>
-
   <style>
     body {
       background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      min-height: 100vh;
+      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -18,20 +17,18 @@
 
     .box {
       background: white;
-      padding: 25px;
+      padding: 30px;
       border-radius: 20px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-      max-width: 420px;
-      position: relative;
+      max-width: 400px;
     }
 
     h1 {
       color: #ff4d6d;
-      margin-bottom: 10px;
     }
 
     button {
-      padding: 12px 22px;
+      padding: 12px 20px;
       margin: 10px;
       border: none;
       border-radius: 25px;
@@ -48,7 +45,57 @@
       background: #ccc;
       position: absolute;
     }
+  </style>
+</head>
+<body>
 
-   
+  <div class="box">
+    <h1>Will you be my Valentine, Himanshi? 💖</h1>
+    <button class="yes" onclick="sayYes()">Yes 💕</button>
+    <button class="no" onmouseover="moveNo()">No 🙈</button>
 
-     
+    <div id="result"></div>
+  </div>
+
+  <audio id="music">
+    <source src="every-breath-you-take.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function moveNo() {
+      const btn = document.querySelector('.no');
+      btn.style.left = Math.random() * 80 + '%';
+      btn.style.top = Math.random() * 80 + '%';
+    }
+
+    function sayYes() {
+      document.getElementById('music').play();
+
+      document.querySelector('.box').innerHTML = `
+        <h1>Yayyyy 💘🥹</h1>
+        <p><strong>Breakfast Date Menu 🍳</strong></p>
+        <p>
+          • Chicken Salad 🥗<br>
+          • English Breakfast 🍳<br>
+          • Chicken Pasta 🍝<br>
+          • Pepperoni Pizza 🍕<br>
+          • Spicy Ramen 🍜
+        </p>
+
+        <p><strong>Desserts 🍫🍓</strong></p>
+        <p>
+          • Chocolate Cake baked by Shihoo 🍰<br>
+          • Chocolate little hearts made by me ❤️
+        </p>
+
+        <p><strong>📍 Place:</strong> Shihoo’s residence<br>
+           <strong>⏰ Time:</strong> Anytime you like ❤️<br>
+           <strong>📅 Date:</strong> 14th February 2026</p>
+
+        <h2>I can’t wait 💕</h2>
+      `;
+    }
+  </script>
+
+</body>
+</html>
