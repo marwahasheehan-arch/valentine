@@ -1,222 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Valentine?</title>
+  <meta charset="UTF-8" />
+  <title>Valentine 💘</title>
   <style>
     body {
-      margin: 0;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
       height: 100vh;
       display: flex;
-      align-items: center;
       justify-content: center;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      font-family: 'Poppins', sans-serif;
+      align-items: center;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
       overflow: hidden;
     }
 
-    .card {
+    .box {
       background: white;
-      padding: 35px;
+      padding: 30px;
       border-radius: 20px;
-      text-align: center;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      max-width: 460px;
-      z-index: 2;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      max-width: 400px;
     }
 
-    h1, h2 {
+    h1 {
       color: #ff4d6d;
     }
 
-    p {
-      color: #444;
-      line-height: 1.6;
-    }
-
-    ul {
-      text-align: left;
-      padding-left: 20px;
-    }
-
-    .details {
-      background: #fff0f3;
-      border-radius: 15px;
-      padding: 15px;
-      margin-top: 20px;
-      text-align: left;
-    }
-
-    .typing {
-      margin-top: 18px;
-      font-size: 18px;
-      color: #ff4d6d;
-      font-weight: bold;
-      min-height: 24px;
-    }
-
-    .save-btn {
-      margin-top: 20px;
-      background: #ff4d6d;
-      color: white;
-      padding: 12px 26px;
+    button {
+      padding: 12px 20px;
+      margin: 10px;
       border: none;
       border-radius: 25px;
       font-size: 16px;
       cursor: pointer;
-      transition: 0.3s ease;
     }
 
-    .save-btn:hover {
-      background: #e63950;
-      transform: scale(1.05);
-    }
-
-    button {
-      padding: 12px 28px;
-      font-size: 18px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      transition: 0.3s ease;
-      position: relative;
-    }
-
-    #yesBtn {
+    .yes {
       background: #ff4d6d;
       color: white;
-      margin-right: 15px;
     }
 
-    #yesBtn:hover {
-      background: #e63950;
-      transform: scale(1.1);
-    }
-
-    #noBtn {
+    .no {
       background: #ccc;
-      color: #333;
       position: absolute;
-    }
-
-    .hearts {
-      position: fixed;
-      top: -10px;
-      font-size: 24px;
-      animation: fall 4s linear infinite;
-      z-index: 1;
-    }
-
-    @keyframes fall {
-      0% { transform: translateY(0); opacity: 1; }
-      100% { transform: translateY(110vh); opacity: 0; }
-    }
-
-    .music-hint {
-      position: fixed;
-      bottom: 15px;
-      font-size: 14px;
-      color: white;
-      opacity: 0.8;
     }
   </style>
 </head>
 <body>
 
-  <!-- 🎵 Background Music -->
-  <audio id="bgMusic" loop>
+  <div class="box">
+    <h1>Will you be my Valentine, Himanshi? 💖</h1>
+    <button class="yes" onclick="sayYes()">Yes 💕</button>
+    <button class="no" onmouseover="moveNo()">No 🙈</button>
+
+    <div id="result"></div>
+  </div>
+
+  <audio id="music">
     <source src="every-breath-you-take.mp3" type="audio/mpeg">
   </audio>
 
-  <div class="card" onclick="startMusic()">
-    <h1>Will you be my Valentine, Himanshi? 💖</h1>
-    <button id="yesBtn" onclick="sayYes()">Yes 💘</button>
-    <button id="noBtn">No 🙈</button>
-  </div>
-
-  <div class="music-hint">Tap anywhere for music 🎶</div>
-
   <script>
-    const noBtn = document.getElementById("noBtn");
-    const music = document.getElementById("bgMusic");
-
-    noBtn.addEventListener("mouseover", moveButton);
-    noBtn.addEventListener("click", moveButton);
-
-    function moveButton() {
-      const x = Math.random() * (window.innerWidth - 120);
-      const y = Math.random() * (window.innerHeight - 60);
-      noBtn.style.left = x + "px";
-      noBtn.style.top = y + "px";
+    function moveNo() {
+      const btn = document.querySelector('.no');
+      btn.style.left = Math.random() * 80 + '%';
+      btn.style.top = Math.random() * 80 + '%';
     }
 
     function sayYes() {
-      document.body.innerHTML = `
-        <div class="card">
-          <h1>YAYYY 💕🥹</h1>
-          <p>So it’s a <b>YES</b> 🫶  
-          and that means I get to spoil you a little 💖</p>
+      document.getElementById('music').play();
 
-          <h2>🍳 Breakfast Date Menu</h2>
-          <ul>
-            <li>🥗 Chicken Salad</li>
-            <li>🍳 English Breakfast</li>
-            <li>🍝 Chicken Pasta</li>
-            <li>🍕 Pepperoni Pizza</li>
-            <li>🍜 Spicy Ramen</li>
-          </ul>
+      document.querySelector('.box').innerHTML = `
+        <h1>Yayyyy 💘🥹</h1>
+        <p><strong>Breakfast Date Menu 🍳</strong></p>
+        <p>
+          • Chicken Salad 🥗<br>
+          • English Breakfast 🍳<br>
+          • Chicken Pasta 🍝<br>
+          • Pepperoni Pizza 🍕<br>
+          • Spicy Ramen 🍜
+        </p>
 
-          <p><b>You choose whatever you like 😌</b></p>
+        <p><strong>Desserts 🍫🍓</strong></p>
+        <p>
+          • Chocolate Cake baked by Shihoo 🍰<br>
+          • Chocolate little hearts made by me ❤️
+        </p>
 
-          <h2>🍰 Desserts</h2>
-          <ul>
-            <li>🍫 Chocolate cake baked by <b>Shihoo</b></li>
-            <li>❤️ Chocolate little hearts made by <b>me</b></li>
-            <li>🍓 Served with fresh strawberries</li>
-          </ul>
+        <p><strong>📍 Place:</strong> Shihoo’s residence<br>
+           <strong>⏰ Time:</strong> Anytime you like ❤️<br>
+           <strong>📅 Date:</strong> 14th February 2026</p>
 
-          <div class="details">
-            <p><b>📍 Place:</b> Shihoo’s residence</p>
-            <p><b>⏰ Time:</b> Anytime you like ❤️</p>
-            <p><b>📅 Date:</b> 14th February 2026</p>
-          </div>
-
-          <div class="typing" id="typingText"></div>
-
-          <button class="save-btn" onclick="saveDate()">💌 Save the Date</button>
-        </div>
+        <h2>I can’t wait 💕</h2>
       `;
-      createHearts();
-      typeText("I choose you. ❤️");
-    }
-
-    function typeText(text) {
-      const el = document.getElementById("typingText");
-      let i = 0;
-      const interval = setInterval(() => {
-        el.textContent += text.charAt(i);
-        i++;
-        if (i === text.length) clearInterval(interval);
-      }, 90);
-    }
-
-    function saveDate() {
-      alert("💖 Date saved. I can’t wait to see you. 💖");
-    }
-
-    function createHearts() {
-      setInterval(() => {
-        const heart = document.createElement("div");
-        heart.className = "hearts";
-        heart.innerHTML = "💖";
-        heart.style.left = Math.random() * 100 + "vw";
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 4000);
-      }, 300);
-    }
-
-    function startMusic() {
-      music.play().catch(() => {});
     }
   </script>
 
